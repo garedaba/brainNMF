@@ -1,0 +1,15 @@
+paths:
+  datapath: /home/gball/PROJECTS/brainNMF/Phenomics/
+  outDir: /home/gball/PROJECTS/brainNMF/GeneratedData/
+  results: /home/gball/PROJECTS/brainNMF/Results/
+
+preprocessing:
+  combat: yes      # comBat harmonisation on cortical data
+  winsorise: yes   # flatten top and bottom 1% of subject's cortical metric values
+  unit_norm: no    # normalise individual data to unit norm
+
+nmf:
+  decomp_data: all # 'all' or 'hc', perform NMF on all data or just controls
+  init: svd        # NMF initialisation
+  init_comps: 50   # initial number of components
+  n_iter: 250000   # max number of iterations
