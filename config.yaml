@@ -4,9 +4,9 @@ paths:
   results: /home/gball/PROJECTS/brainNMF/Results/
 
 preprocessing:
-  combat: yes      # comBat harmonisation on cortical data
-  winsorise: yes   # flatten top and bottom 1% of subject's cortical metric values
-  unit_norm: no    # normalise individual data to unit norm
+  combat: yes  # 'Combat' or 'noCombat', comBat harmonisation on cortical data
+  winsorise: yes # 'Wins' or 'noWins', flatten top and bottom 1% of subject's cortical metric values
+  unit_norm: no # 'Norm' or 'noNorm' normalise individual data to unit norm
 
 nmf:
   decomp_data: all # 'all' or 'hc', perform NMF on all data or just controls
