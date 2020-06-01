@@ -11,7 +11,7 @@ import numpy as np
 import pandas as pd
 
 from functions.image_functions import load_surf_data, save_surface_out
-from NMF.nmf import ARDPNMF, normalise_features
+from NMF.nmf import PNMF, ARDPNMF, normalise_features
 
 from scipy.stats.mstats import winsorize
 from neuroCombat import neuroCombat
@@ -93,7 +93,7 @@ def main():
         if preprocessing_params['unit_norm']:
             print('normalising individual data to unit norm')
             print('')
-            surface_data  = normalise_features(surface_data)
+            surface_data  = normalise_features(surface_data) * 100
 
         if subj == 'hc':
             print('performing NMF using healthy control data ONLY')
@@ -110,7 +110,16 @@ def main():
             print('*********************************************************')
             print('RUNNING NMF')
             print('*********************************************************')
-            nmf_results = ARDPNMF(surface_data.T, nmf_params['init_comps'],
+            if nmf_params['ard']: # no ARD with normed rows - always squashes to single factor
+                print('using ARD to estimate number of components')
+                if preprocessing_params['unit_norm']:
+                    print('WARNING: likely to fail if unit_norm is set to : True')
+                nmf_results = ARDPNMF(surface_data.T, nmf_params['init_comps'],
+                                                      init=nmf_params['init'],
+                                                      maxIter=nmf_params['n_iter'],
+                                                      tol=1e-6)
+            else:
+                nmf_results = PNMF(surface_data.T, nmf_params['init_comps'],
                                                   init=nmf_params['init'],
                                                   maxIter=nmf_params['n_iter'],
                                                   tol=1e-6)

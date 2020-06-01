@@ -4,12 +4,13 @@ paths:
   results: /home/gball/PROJECTS/brainNMF/Results/
 
 preprocessing:
-  combat: yes  # 'Combat' or 'noCombat', comBat harmonisation on cortical data
+  combat: yes    # 'Combat' or 'noCombat', comBat harmonisation on cortical data
   winsorise: yes # 'Wins' or 'noWins', flatten top and bottom 1% of subject's cortical metric values
-  unit_norm: no # 'Norm' or 'noNorm' normalise individual data to unit norm
+  unit_norm: yes # 'Norm' or 'noNorm' normalise individual data to unit norm
 
 nmf:
+  ard: no          # use ARD-PNMF instead of PNMF (can fail if unit_norm is 'yes')
   decomp_data: all # 'all' or 'hc', perform NMF on all data or just controls
-  init: svd        # NMF initialisation
+  init: svd     # NMF initialisation
   init_comps: 50   # initial number of components
   n_iter: 250000   # max number of iterations
