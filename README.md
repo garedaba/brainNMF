@@ -27,11 +27,5 @@ To clone environment try: `conda create -n new environment --file req.txt`
 __1. Decompose cortical metrics into non-negative components using NMF__  
 >`python A__runNMF.py`
 
-__2. Build classification models of HC vs ADHD/SCZ/BPD and derive individual model [explanations](https://arxiv.org/abs/1912.08755v2)__
+__2. Build classification models of HC vs ADHD/SCZ/BPD
 > `python B__getModelExplanations.py`  
-
-__3. Cluster subjects based on model explanations__
-> `python C__clusterSubjects.py`  
-
-__4. Visualise results__
->`D__makeGraphs.py`

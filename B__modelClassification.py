@@ -116,7 +116,7 @@ def main():
     print('')
 
     # 5-fold CV - stratified on DX categories
-    skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+    skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=24)
 
     # all metric columns
     x = metric_data.loc[:, metric_data.columns.str.contains(metric)]
